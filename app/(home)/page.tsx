@@ -4,26 +4,29 @@ import BannerHome from "@/components/global/BannerHome"
 const getData = async () => {
   const data = await sanityClient.fetch(
     `*[_type == 'homepage'][0]{
-      backgroundHero,
+      backGroundHero,
+      alt,
+      backGroundHeroLg,
+      backGroundImageAltLg,
       subtitle,
       titleHero,
       text,
       button,
   }`,
-    { next: { revalidate: 0 } }
+    { next: { revalidate: 10 } }
   );
 
   return data;
 };
 
 export default async function Home() {
-  const { backgroundHero, subtitle, titleHero, text, button, } = await getData();
+  const { backGroundHero, backGroundHeroLg, subtitle, titleHero, text, button, } = await getData();
 
   return (
-    <main className="bg-dark-blue h-screen w-full">
+    <main>
       <BannerHome
-      backGroundImageSrc={backgroundHero.asset._ref}
-      backGroundImageAlt={backgroundHero.alt}
+      backGroundImageSrc={backGroundHero.asset._ref}
+      backGroundImageAlt={backGroundHero.alt}
       subTitle={subtitle}
       title={titleHero}
       text={text}

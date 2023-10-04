@@ -37,7 +37,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${barlow.variable} ${barlow.className}`}>
-        <Header navigationLinks={navigation} />
+        {/* <Header navigationLinks={navigation} /> */}
         {children}
       </body>
     </html>
