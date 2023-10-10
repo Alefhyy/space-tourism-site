@@ -24,7 +24,7 @@ const BannerHome = ({
 }: IHome) => {
     const { src, width, height } = useNextSanityImage(sanityClient, backGroundImageSrc);
     return (
-        <section className="flex justify-center">
+        <div className="flex justify-center">
             <Image
                 src={src}
                 width={width}
@@ -46,7 +46,7 @@ const BannerHome = ({
                     </Link>
                 </button>
             </div>
-        </section>
+        </div>
     );
 }
 

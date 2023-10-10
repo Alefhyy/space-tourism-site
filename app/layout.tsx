@@ -36,7 +36,7 @@ export default async function RootLayout({
   const { navigation } = await getData();
   return (
     <html lang="en">
-      <body className={`${barlow.variable} ${barlow.className}`}>
+      <body className={` ${barlow.variable} ${barlow.className}`}>
         {/* <Header navigationLinks={navigation} /> */}
         {children}
       </body>

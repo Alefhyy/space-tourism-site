@@ -1,3 +1,4 @@
+"use client"
 import sanityClient from "@/sanityClientConfig";
 import BannerHome from "@/components/global/BannerHome"
 
@@ -5,7 +6,6 @@ const getData = async () => {
   const data = await sanityClient.fetch(
     `*[_type == 'homepage'][0]{
       backGroundHero,
-      alt,
       backGroundHeroLg,
       backGroundImageAltLg,
       subtitle,
@@ -13,7 +13,7 @@ const getData = async () => {
       text,
       button,
   }`,
-    { next: { revalidate: 10 } }
+    { next: { revalidate: 0 } }
   );
 
   return data;
@@ -23,16 +23,16 @@ export default async function Home() {
   const { backGroundHero, backGroundHeroLg, subtitle, titleHero, text, button, } = await getData();
 
   return (
-    <main>
+    <section>
       <BannerHome
-      backGroundImageSrc={backGroundHero.asset._ref}
-      backGroundImageAlt={backGroundHero.alt}
+      backGroundImageSrc={backGroundHeroLg.asset._ref}
+      backGroundImageAlt={backGroundHeroLg.alt}
       subTitle={subtitle}
       title={titleHero}
       text={text}
       ctaTitle={button.buttonTitle}
       ctaHref={button.buttonLink}
       />
-    </main>
+    </section>
   )
 }

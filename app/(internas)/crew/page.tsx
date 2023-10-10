@@ -1,4 +1,4 @@
-export default async function Crew() {
+export default function Crew() {
     return (
         <div>
             Pagina Crew
